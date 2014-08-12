@@ -1,0 +1,24 @@
+= form_for [@hospital, @patient] do |f|
+  - if @patient.errors.any?
+    %h2= "#{pluralize(patient.errors.count, "error")}unable to enter patient:"
+    %ul
+      -@patient.errors.full_massages.each do |msg|
+        %li= msg
+
+  .field
+    = f.label :firstname 
+    = f.text_field :firstname 
+  .field
+    = f.label :lastname 
+    = f.text_field :lastname 
+  .field
+    = f.label :DOB
+    = f.text_field :DOB
+  .field
+    = f.label :gender 
+    = f.text_field :gender 
+  .field
+    = f.label :description
+    = f.text_field :description
+  .actions
+    = f.submit 'Update'

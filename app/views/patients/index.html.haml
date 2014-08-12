@@ -1,0 +1,34 @@
+%h1 Listing patients
+
+%table
+  %tr
+    %th First name
+    %th Last name
+    %th DOB
+    %th Workflow State
+    %th
+    %th
+    %th
+    %th Change State
+
+  - @patients.each do |patient|
+    %tr
+      %td= patient.firstname
+      %td= patient.lastname
+      %td= patient.DOB
+      %td= patient.workflow_state
+      %td= link_to 'Show', patient
+      %td= link_to 'Edit', edit_patient_path(patient)
+      %td
+        = link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      / %td.workflow_state
+      /   - if patient.workflow_state != "sold"
+      /     = link_to "Sell!", sell_patient_patient_path(patient), method: :put
+      /   - if !['reserved', 'sold'].include?(patient.workflow_state)
+      /     = link_to "Reserve!", reserve_patient_path(patient), method: :put
+      /   - if !['for_sale', 'sold'].include?(patient.workflow_state)
+      /     = link_to "Reneg!", reneg_patient_path(patient), method: :put
+
+%br
+
+= link_to 'New Patient', new_patient_path

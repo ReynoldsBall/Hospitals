@@ -1,0 +1,27 @@
+%h1 Patient File<
+
+%h4 First Name:
+
+%p= @patient.firstname 
+
+
+%h4 Last Name:
+
+%p= @patient.lastname 
+
+%h4 Gender:
+
+%p= @patient.gender
+
+%h4 DOB:
+
+%p= @patient.DOB 
+
+%h4 Status:
+
+%p= @patient.description 
+
+
+
+
+= link_to "Home", root_path(hospital) 
