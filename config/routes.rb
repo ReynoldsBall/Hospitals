@@ -6,7 +6,9 @@ Rails.application.routes.draw do
    root 'welcome#index'
 
    resources :hospitals do
-    resources :patients
+    resources :patients do
+      resources :meds
+    end
   end
    
 

@@ -11,7 +11,7 @@
   /= @hospital.patients.inspect
   - @hospital.patients.each do |patient|
     %li
-      = link_to "#{patient.firstname} | #{patient.laatname}", hospital_patient_path(@hospital, patient)
+      = link_to "#{patient.firstname} | #{patient.lastname}", hospital_patient_path(@hospital, patient)
       |
       = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
       |

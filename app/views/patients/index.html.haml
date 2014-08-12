@@ -1,13 +1,13 @@
-%h1 Listing patients
+h1 Listing Patients
 
 %table
   %tr
-    %th First name
-    %th Last name
+    %th Firstname
+    %th Lastname
     %th DOB
+    %th Gender
+    %th Description
     %th Workflow State
-    %th
-    %th
     %th
     %th Change State
 
@@ -16,18 +16,20 @@
       %td= patient.firstname
       %td= patient.lastname
       %td= patient.DOB
+      %td= patient.gender
+      %td= patient.description
       %td= patient.workflow_state
       %td= link_to 'Show', patient
       %td= link_to 'Edit', edit_patient_path(patient)
       %td
         = link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
-      / %td.workflow_state
-      /   - if patient.workflow_state != "sold"
-      /     = link_to "Sell!", sell_patient_patient_path(patient), method: :put
-      /   - if !['reserved', 'sold'].include?(patient.workflow_state)
-      /     = link_to "Reserve!", reserve_patient_path(patient), method: :put
-      /   - if !['for_sale', 'sold'].include?(patient.workflow_state)
-      /     = link_to "Reneg!", reneg_patient_path(patient), method: :put
+      %td.workflow_state
+        - if patient.workflow_state != "sold"
+          = link_to "Sell!", sell_patient_patient_path(patient), method: :put
+        - if !['reserved', 'sold'].include?(patient.workflow_state)
+          = link_to "Reserve!", reserve_patient_path(patient), method: :put
+        - if !['for_sale', 'sold'].include?(patient.workflow_state)
+          = link_to "Reneg!", reneg_patient_path(patient), method: :put
 
 %br
 

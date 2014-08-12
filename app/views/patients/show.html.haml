@@ -1,4 +1,4 @@
-%h1 Patient File<
+%h1 Patient File
 
 %h4 First Name:
 
@@ -20,8 +20,34 @@
 %h4 Status:
 
 %p= @patient.description 
+/ %p
+/   %strong Firstname:
+/   = @patient.firstname
+/ %p
+/   %strong Lastname:
+/   = @patient.lastname
+/ %p
+/   %strong DOB:
+/   = @patient.DOB
+/ %p
+/   %strong Gender:
+/   = @patient.gender
+/ %p
+/   %strong status:
+/   = @patient.description
+
+/ %p
+/   %strong Hospital
+/   / = @patient.hospital_id
+/   - if @patient.hospital
+/     / @patient.hospital
+/     = link_to @hospital.try(:name), hospital_path(@hospital)
+
+/ @patient.hospital
+= link_to 'Medications', hospital_patient_meds_path(@hospital,@patient)
+%br
+= link_to 'Back', hospital_path(@hospital)
 
 
 
 
-= link_to "Home", root_path(hospital) 

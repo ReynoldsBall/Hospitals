@@ -1,0 +1,27 @@
+= form_for [@hospital, @patient, @med] do |f|
+
+  .field
+    = f.label :name
+    = f.text_field :name
+    
+  .field
+    = f.label :instruction
+    = f.text_field :instruction
+  .actions
+    = f.submit 'Update'
+
+  - if @med.errors.any?
+    %h2= "#{pluralize(meds.errors.count, "error")}unable to enter meds:"
+    %ul
+      -@med.errors.full_massages.each do |msg|
+        %li= msg
+
+  / .field
+  /   = f.label :name
+  /   = f.text_field :name
+    
+  / .field
+  /   = f.label :instruction
+  /   = f.text_field :instruction
+  / .actions
+  /   = f.submit 'Update'

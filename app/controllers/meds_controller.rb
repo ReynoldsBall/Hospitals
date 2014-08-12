@@ -1,0 +1,81 @@
+class MedsController < ApplicationController
+  before_action only: [:show, :edit, :update, :destroy]
+  
+  def index
+    
+    @med = Med.all
+    @patient = Patient.find params[:patient_id]
+    @hospital = Hospital.find params[:hospital_id]  
+  end
+
+
+
+  def show
+    p params
+    @med = Med.find(params[:id])
+    @patient = Patient.find params[:patient_id] 
+  end
+
+
+  def new
+    @med = Med.new
+    @patient = Patient.find params[:patient_id]
+    @hospital = Hospital.find params[:hospital_id] 
+  end
+
+  def edit
+     @med = Med.find(params[:id])
+     @patient = Patient.find params[:patient_id]
+     @hospital = Hospital.find params[:hospital_id]
+  end
+
+  def create
+    
+    @patient = Patient.find params[:patient_id]
+    @hospital = Hospital.find params[:hospital_id]  
+    @med = Med.new med_params
+    respond_to do |format|
+      if @med.save
+        flash[:notice] = "Med was added the Data Base"
+        format.html { redirect_to hospital_patient_path(@hospital, @patient) }
+      else
+        flash[:error] = "Med was not added the Data Base"
+        format.html { render :new }
+      end
+    end
+  end
+
+  
+  def update
+    @med = Med.find(params[:id])
+    @patient = Patient.find params[:patient_id]
+    @hospital = Hospital.find params[:hospital_id]
+    respond_to do |format|
+      if @med.update(med_params)
+        format.html { redirect_to hospital_patient_path(@hospital, @patient), notice: 'med information updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
+  def destroy
+    @hospital = Hospital.find params[:hospital_id]  
+    @patient = Patient.find params[:patient_id]
+    @med = Med.find(params[:id])
+    @med.destroy
+    respond_to do |format|
+      format.html { redirect_to hospital_patient_path(@hospital, @patient), notice: 'med History Deleted'}
+      format.json {head :no_content}
+    end
+  end
+
+
+private
+
+    
+
+    def med_params
+    params.require(:med).permit(:name, :instruction, :patient_id)
+  end
+end

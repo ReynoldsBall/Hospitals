@@ -1,0 +1,29 @@
+%table
+  %tr
+    %th Name
+    %th Instruction
+    %th Workflow State
+    %th
+    %th Change State
+
+  - @med.each do |med|
+    %tr
+      %td= med.name
+      %br
+      %td= med.instruction
+      / %td= med.workflow_state
+      / %td= link_to 'Show', hospital_patient_med_path(@hospital, @patient, med)
+      %td= link_to 'Edit', edit_hospital_patient_med_path(@hospital, @patient, med)
+      %td= link_to 'Destroy', hospital_patient_med_path(@hospital, @patient, med), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      / %td= link_to 'Destroy', hospital_patient_medication_path(@hospital, @patient, medication), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      / %td.workflow_state
+      /   - if med.workflow_state != "sold"
+      /     = link_to "Sell!", sell_med_med_path(med), method: :put
+      /   - if !['reserved', 'sold'].include?(med.workflow_state)
+      /     = link_to "Reserve!", reserve_med_path(med), method: :put
+      /   - if !['for_sale', 'sold'].include?(med.workflow_state)
+      /     = link_to "Reneg!", reneg_med_path(med), method: :put
+
+%br
+
+= link_to 'New med', new_hospital_patient_med_path
