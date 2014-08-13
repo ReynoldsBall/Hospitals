@@ -1,4 +1,4 @@
-%h1 Show hospital
+%h1 Charleston Hospital
 %strong
   Name:
 = @hospital.name
@@ -16,8 +16,9 @@
       = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
       |
       = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
-%Doctors
 %br
+%p Doctors
+
 -@doctors.each do |f|
   %li  
     = f.name

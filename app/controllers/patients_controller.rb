@@ -11,8 +11,12 @@ class PatientsController < ApplicationController
   def show
     p params
     @patient = Patient.find(params[:id])
-    
+
     @hospital = Hospital.find params[:hospital_id] 
+
+ 
+   @doctors = @hospital.doctors.all
+   @doctor = @hospital.doctors.new
   end
 
 
@@ -39,6 +43,16 @@ class PatientsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+   def create_doctor
+    @hospital.doctors.create doctor_params
+    redirect_to @hospital
+  end
+
+  def delete_doctor
+    @doctor.delete
+    redirect_to hospital_path(@hospital)
   end
 
   

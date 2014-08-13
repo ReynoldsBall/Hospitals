@@ -20,6 +20,20 @@
 %h4 Status:
 
 %p= @patient.description 
+
+
+%h2 Doctors
+
+-@doctors.each do |f|
+  %li  
+    = f.name
+    |
+
+    = link_to "delete", delete_doctor_hospital_path(@hospital, @patient, doctor_id: f.id), method: :delete
+    %br
+    %br
+
+
 / %p
 /   %strong Firstname:
 /   = @patient.firstname
@@ -44,6 +58,8 @@
 /     = link_to @hospital.try(:name), hospital_path(@hospital)
 
 / @patient.hospital
+%br
+
 = link_to 'Medications', hospital_patient_meds_path(@hospital,@patient)
 %br
 = link_to 'Back', hospital_path(@hospital)
