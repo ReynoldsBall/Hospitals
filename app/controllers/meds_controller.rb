@@ -1,5 +1,5 @@
 class MedsController < ApplicationController
-  before_action only: [:show, :edit, :update, :destroy]
+  before_action only: [:show, :edit, :update, :destroy,]
   
   def index
     
@@ -70,8 +70,22 @@ class MedsController < ApplicationController
     end
   end
 
+  def create_doctor
+    @doctor = @patient.doctors.create doctor_params
+    redirect_to hospital_patient_path
+  end
+
+  def delete_doctor
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = Patient.find params[:id]
+    @doctor = Doctor.find params[:doctor_id]
+    @doctor.delete
+    redirect_to hospital_patient_path
+  end
+
 
 private
+  
 
     
 

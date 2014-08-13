@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
     belongs_to :hospital
+    has_many :doctors, as: :doctorable
     has_many :meds
   include Workflow
   workflow do 

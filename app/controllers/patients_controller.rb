@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action only: [:show, :edit, :update, :destroy]
+  before_action only: [:show, :edit, :update, :destroy, :find_doctor, :create_doctor, :delete_doctor]
   
   def index
     @patients = Patient.all
@@ -11,6 +11,7 @@ class PatientsController < ApplicationController
   def show
     p params
     @patient = Patient.find(params[:id])
+    
     @hospital = Hospital.find params[:hospital_id] 
   end
 
@@ -65,7 +66,21 @@ class PatientsController < ApplicationController
 
 
 private
+  
+  def find_doctor
+    @doctor = Doctor.find params[:doctor_id]
+  end
+  def find_patient
+    @patient = Patient.find params[:id]
+  end
 
+  def find_hospital
+    @hospital = Hospital.find params[:hospital_id]
+  end
+
+  def doctor_params
+    params.require(:doctor).permit(:name)
+  end
     
 
     def patient_params
