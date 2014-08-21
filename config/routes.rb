@@ -4,21 +4,28 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'welcome#index'
+   devise_for :users
 
    resources :hospitals do
     member do
       post :create_doctor
       delete :delete_doctor
     end
-    resources :patients do
+     resources :patients do
       member do
-      post :create_doctor
-      delete :delete_doctor
-    end
+        put :wait
+        put :checkup
+        put :xray
+        put :surgery
+        put :pay_bills
+        put :discharge
+        post :create_doctor
+        delete :delete_doctor
+      end
       resources :meds
     end
+
   end
-   
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
