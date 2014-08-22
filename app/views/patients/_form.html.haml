@@ -1,6 +1,7 @@
 = form_for [@hospital, @patient] do |f|
   - if @patient.errors.any?
-    %h2= "#{pluralize(patient.errors.count, "error")}unable to enter patient:"
+    %h2= "#{pluralize(patient.errors.count, "error")}
+      unable to enter patient:"
     %ul
       -@patient.errors.full_massages.each do |msg|
         %li= msg

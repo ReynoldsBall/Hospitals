@@ -3,15 +3,17 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
-   devise_for :users
+  
+  # devise_for :users
 
-   resources :hospitals do
+  root 'welcome#index'
+
+  resources :hospitals do
     member do
       post :create_doctor
       delete :delete_doctor
     end
-     resources :patients do
+    resources :patients do
       member do
         put :wait
         put :checkup

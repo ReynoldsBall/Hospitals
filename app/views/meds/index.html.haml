@@ -9,7 +9,6 @@
   - @med.each do |med|
     %tr
       %td= med.name
-      %br
       %td= med.instruction
       / %td= med.workflow_state
       / %td= link_to 'Show', hospital_patient_med_path(@hospital, @patient, med)
