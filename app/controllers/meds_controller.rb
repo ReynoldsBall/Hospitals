@@ -1,5 +1,5 @@
 class MedsController < ApplicationController
-  # before_action :authenticate_user!
+   before_action :authenticate_user!
   before_action only: [:show, :edit, :update, :destroy,]
   
   def index

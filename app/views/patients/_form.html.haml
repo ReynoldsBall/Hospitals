@@ -1,10 +1,10 @@
 = form_for [@hospital, @patient] do |f|
   - if @patient.errors.any?
-    %h2= "#{pluralize(patient.errors.count, "error")}
-      unable to enter patient:"
-    %ul
-      -@patient.errors.full_massages.each do |msg|
-        %li= msg
+    #error_explanation
+      %h2= "#{pluralize(patient.errors.count, "error")} unable to enter patient:"
+      %ul
+        -@patient.errors.full_massages.each do |msg|
+          %li= msg
 
   .field
     = f.label :firstname 
