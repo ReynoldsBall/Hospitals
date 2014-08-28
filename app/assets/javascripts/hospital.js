@@ -13,4 +13,13 @@ $(document).ready(function(){
       // console.log("Rob");
 }
   )
+   $(".new_page").click(function() {
+    console.log("hey man")
+    var new_page = $(this).html()
+    console.log(new_page)
+    $(".hospital_list").addClass("hidden")
+    $(".group_" + new_page).removeClass("hidden")
+
+  })
+
 })

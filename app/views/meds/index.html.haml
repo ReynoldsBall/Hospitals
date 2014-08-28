@@ -3,12 +3,11 @@
     %th Name
     %th Instruction
     %th Workflow State
-    %th
     %th Change State
 
   - @med.each do |med|
     %tr
-      %td= med.name
+      %td= med.name + ":"
       %td= med.instruction
       / %td= med.workflow_state
       / %td= link_to 'Show', hospital_patient_med_path(@hospital, @patient, med)

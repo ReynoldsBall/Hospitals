@@ -1,13 +1,21 @@
 %h1 Hospitals
 = link_to "Create Hospital", new_hospital_path
+- group_number_total = 0      
 %ul
-  - @hospitals.each do |hospital|
-    %li
-      %strong
+  - Hospital.all.each_slice(5) do |hospital_group|
+    / = hospital_group.length.inspect
+    - group_number_total += 1
+    / = group_number_total
+    - hospital_group.each do |hospital|    
+      %li{class: "#{'hidden' if group_number_total >= 2} group_#{group_number_total} hospital_list"}
         = link_to hospital.name, hospital_path(hospital)
-     
-      |
-      = link_to "Edit", edit_hospital_path(hospital)
-      |
-      = link_to "Delete", hospital_path(hospital), method: :delete
+        |
+
+        = link_to "Edit", edit_hospital_path(hospital)
+        |
+        = link_to "Delete", hospital_path(hospital), method: :delete
+        
+- group_number_total.times do |x|
+  = link_to x + 1, "javascript:void(0);", class: "new_page"
+  |
 = link_to "Back", root_path

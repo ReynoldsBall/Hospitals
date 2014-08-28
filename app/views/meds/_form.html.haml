@@ -4,10 +4,11 @@
     = f.text_field :name
     
   .field
-    = f.label :instruction
-    = f.text_field :instruction
+    = f.label :instructions
+    %br
+    = f.text_area :instruction
   .actions
-    = f.submit 'Update'
+    = f.submit "Update", disabled: 'disabled', class: "med_submit"
 
   - if @med.errors.any?
     %h2= "#{pluralize(meds.errors.count, "error")}unable to enter meds:"
