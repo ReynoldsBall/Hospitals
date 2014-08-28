@@ -7,7 +7,7 @@ $(document).ready(function(){
          $(".hospital_submit").removeAttr("disabled").addClass("btn-danger").removeClass("btn-warning");
        }
     else{
-       $(".hospital_submit").removeAttr("disabled");
+       $(".hospital_submit").attr("disabled","disabled");
     }
       // $(this).attr("disabled", "disabled")
       // console.log("Rob");

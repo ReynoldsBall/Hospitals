@@ -7,7 +7,7 @@ $(document).ready(function(){
          $(".patient_submit").removeAttr("disabled").addClass("btn-danger").removeClass("btn-warning");
        }
     else{
-       $(".patient_submit").removeAttr("disabled");
+       $(".patient_submit").attr("disabled","disabled");
     }
       // $(this).attr("disabled", "disabled")
       // console.log("Rob");
@@ -19,7 +19,7 @@ $(document).ready(function(){
          $(".patient_submit").removeAttr("disabled").addClass("btn-danger").removeClass("btn-warning");
        }
     else{
-       $(".patient_submit").removeAttr("disabled");
+       $(".patient_submit").attr("disabled","disabled");
     }
       // $(this).attr("disabled", "disabled")
       // console.log("Rob");
@@ -30,7 +30,7 @@ $(document).ready(function(){
          $(".patient_submit").removeAttr("disabled").addClass("btn-danger").removeClass("btn-warning");
        }
     else{
-       $(".patient_submit").removeAttr("disabled");
+       $(".patient_submit").attr("disabled","disabled");
     }
       // $(this).attr("disabled", "disabled")
       // console.log("Rob");
@@ -41,7 +41,7 @@ $(document).ready(function(){
          $(".patient_submit").removeAttr("disabled").addClass("btn-danger").removeClass("btn-warning");
        }
     else{
-       $(".patient_submit").removeAttr("disabled");
+       $(".patient_submit").attr("disabled","disabled");
     }
       // $(this).attr("disabled", "disabled")
       // console.log("Rob");
@@ -52,7 +52,7 @@ $(document).ready(function(){
          $(".patient_submit").removeAttr("disabled").addClass("btn-danger").removeClass("btn-warning");
        }
     else{
-       $(".patient_submit").removeAttr("disabled");
+       $(".patient_submit").attr("disabled","disabled");
     }
       // $(this).attr("disabled", "disabled")
       // console.log("Rob");
