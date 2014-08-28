@@ -21,5 +21,6 @@
   .field
     = f.label :description
     = f.text_field :description
-  .actions
-    = f.submit 'Update'
+    %br
+  = f.submit "Update", disabled: 'disabled', class: "patient_submit"
+  

@@ -1,7 +1,7 @@
 class HospitalsController < ApplicationController
- before_action :authenticate_user!
-before_action :find_hospital, only: [:show, :edit, :update, :destroy, :find_doctor, :create_doctor, :delete_doctor]
-before_action :find_doctor, only: [:delete_doctor] 
+  before_action :authenticate_user!
+  before_action :find_hospital, only: [:show, :edit, :update, :destroy, :find_doctor, :create_doctor, :delete_doctor]
+  before_action :find_doctor, only: [:delete_doctor] 
 
   def index
     @hospitals = Hospital.all
