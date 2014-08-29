@@ -1,5 +1,10 @@
 %h1 Patient File
 
+
+%h4 Patient Process
+
+%p= @patient.workflow_state
+
 %h4 First Name:
 
 %p= @patient.firstname 
@@ -20,6 +25,7 @@
 %h4 Status:
 
 %p= @patient.description 
+
 
 
 %h2 Doctors

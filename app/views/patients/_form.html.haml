@@ -6,6 +6,18 @@
         -@patient.errors.full_massages.each do |msg|
           %li= msg
 
+    %br
+  %select{ :workflow_state => "workflow_state" }
+    %option{:value => :wait}= "Waiting"
+    %option{:value => :surgery}= "In Surgery"
+    %option{:value => :xray}= "Getting X-Rays"
+    %option{:value => :checkup}= "Getting Checkup"
+    %option{:value => :pay_bills}= "Paying"
+    %option{:value => :discharge}= "Discharged"
+
+  %br
+  %br
+
   .field
     = f.label :firstname 
     = f.text_field :firstname 
@@ -14,13 +26,13 @@
     = f.text_field :lastname 
   .field
     = f.label :DOB
-    = f.text_field :DOB
+    = f.date_field :DOB, :value => Date.today
   .field
     = f.label :gender 
     = f.text_field :gender 
   .field
     = f.label :description
     = f.text_field :description
-    %br
+  %br
   = f.submit "Update", disabled: 'disabled', class: "patient_submit"
   

@@ -24,12 +24,18 @@ h1 Listing Patients
       %td
         = link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
       %td.workflow_state
-        - if patient.workflow_state != "sold"
-          = link_to "Sell!", sell_patient_patient_path(patient), method: :put
-        - if !['reserved', 'sold'].include?(patient.workflow_state)
-          = link_to "Reserve!", reserve_patient_path(patient), method: :put
-        - if !['for_sale', 'sold'].include?(patient.workflow_state)
-          = link_to "Reneg!", reneg_patient_path(patient), method: :put
+        - if patient.workflow_state != "discharged"
+          = link_to "Discharge!", discharge_patient_patient_path(patient), method: :put
+        - if !['waited', 'discharged'].include?(patient.workflow_state)
+          = link_to "Wait!", wait_patient_path(patient), method: :put
+        - if !['checkuped', 'discharged'].include?(patient.workflow_state)
+          = link_to "Checkup!", checkup_patient_path(patient), method: :put
+        - if !['xrayed', 'discharged'].include?(patient.workflow_state)
+          = link_to "Xray!", xray_patient_path(patient), method: :put
+        - if !['surgeryed', 'discharged'].include?(patient.workflow_state)
+          = link_to "Surgery!", surgery_patient_path(patient), method: :put
+        - if !['paid_bills', 'discharged'].include?(patient.workflow_state)
+          = link_to "Pay_bills!", pay_bills_patient_path(patient), method: :put
 
 %br
 

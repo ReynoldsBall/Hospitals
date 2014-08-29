@@ -56,6 +56,46 @@ class PatientsController < ApplicationController
     redirect_to hospital_path(@hospital)
   end
 
+  def wait
+    @hospital = Hospital.find params[:hospital_id]
+    # @patient = patient.find params[:id]
+    @patient.wait!
+    redirect_to patients_url
+  end
+
+  def checkup
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.checkup!
+    redirect_to patients_url
+  end
+
+  def xray
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.xray!
+    redirect_to patients_url
+  end
+
+  def surgery
+    @hospital = Hospital.find params[:hospital_id]
+    # @patient = patient.find params[:id]
+    @patient.surgery!
+    redirect_to patients_url
+  end
+
+  def pay_bills
+    @hospital = Hospital.find params[:hospital_id]
+    # @patient = patient.find params[:id]
+    @patient.pay_bills!
+    redirect_to patients_url
+  end
+
+  def discharge
+    @hospital = Hospital.find params[:hospital_id]
+    # @patient = patient.find params[:id]
+    @patient.discharge!
+    redirect_to patients_url
+  end
+
   
   def update
     @patient = Patient.find(params[:id])
