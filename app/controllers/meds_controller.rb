@@ -36,7 +36,7 @@ class MedsController < ApplicationController
     @hospital = Hospital.find params[:hospital_id]  
     @med = @patient.med.new(med_params)
     
-   if @med.save
+    if @med.save
         redirect_to hospital_patient_path(@hospital, @patient)
     else
         render :new 

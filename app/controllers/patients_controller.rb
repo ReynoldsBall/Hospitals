@@ -17,7 +17,7 @@ end
   def show
     p params
     @patient = Patient.find(params[:id])
-    @med = Med.find(params[:id])
+    
     @hospital = Hospital.find params[:hospital_id] 
    @doctors = @hospital.doctors.all
    @doctor = @hospital.doctors.new
@@ -132,9 +132,7 @@ private
   def find_patient
     @patient = Patient.find params[:id]
   end
-  def find_med
-    @med = Med.find params[:id]
-  end
+
   def find_hospital
     @hospital = Hospital.find params[:hospital_id]
   end
