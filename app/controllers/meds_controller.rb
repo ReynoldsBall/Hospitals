@@ -38,10 +38,10 @@ class MedsController < ApplicationController
     respond_to do |format|
       if @med.save
         flash[:notice] = "Med was added the Data Base"
-        format.html { redirect_to hospital_patient_path(@hospital, @patient) }
+        redirect_to hospital_patient_path(@hospital, @patient)
       else
         flash[:error] = "Med was not added the Data Base"
-        format.html { render :new }
+        render :new 
       end
     end
   end

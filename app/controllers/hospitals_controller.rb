@@ -25,6 +25,7 @@ class HospitalsController < ApplicationController
     redirect_to hospitals_path
   end
     def create_doctor
+    @hospital = Hospital.find params[:id]
     @hospital.doctors.create doctor_params
     redirect_to @hospital
   end

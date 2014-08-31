@@ -9,7 +9,7 @@ class PatientsController < ApplicationController
 
   def search_patients
     @patients = Patient.where("last_name LIKE ?", "%#{params[:q]}%")
-  respond_to do |format|
+    respond_to do |format|
       format.js
     end
 end 
@@ -52,10 +52,11 @@ end
   end
 
   def create_doctor
-    @hospital.doctors.create doctor_params
-    redirect_to @hospital
+    @patient = Patient.find params[:id]
+    @doctor = @patient.doctors.create doctor_params
+    redirect_to hospital_patient_path
   end
-
+  
   def delete_doctor
     @doctor.delete
     redirect_to hospital_path(@hospital)
