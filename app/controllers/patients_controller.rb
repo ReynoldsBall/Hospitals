@@ -17,10 +17,8 @@ end
   def show
     p params
     @patient = Patient.find(params[:id])
-
+    @med = Med.find(params[:id])
     @hospital = Hospital.find params[:hospital_id] 
-
- 
    @doctors = @hospital.doctors.all
    @doctor = @hospital.doctors.new
   end
@@ -56,7 +54,7 @@ end
     @doctor = @patient.doctors.create doctor_params
     redirect_to hospital_patient_path
   end
-  
+
   def delete_doctor
     @doctor.delete
     redirect_to hospital_path(@hospital)
