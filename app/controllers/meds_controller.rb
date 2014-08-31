@@ -35,29 +35,14 @@ class MedsController < ApplicationController
     @patient = Patient.find params[:patient_id]
     @hospital = Hospital.find params[:hospital_id]  
     @med = Med.new med_params
-    respond_to do |format|
-      if @med.save
-        flash[:notice] = "Med was added the Data Base"
-        redirect_to hospital_patient_path(@hospital, @patient)
-      else
-        flash[:error] = "Med was not added the Data Base"
-        render :new 
-      end
-    end
+
   end
 
   
   def update
     @med = Med.find(params[:id])
     @patient = Patient.find params[:patient_id]
-    @hospital = Hospital.find params[:hospital_id]
-    respond_to do |format|
-      if @med.update(med_params)
-        format.html { redirect_to hospital_patient_path(@hospital, @patient), notice: 'med information updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
+    @hospital = Hospital.find params[:hospital_id]  
   end
 
   def destroy
