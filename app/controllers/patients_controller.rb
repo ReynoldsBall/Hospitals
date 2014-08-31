@@ -132,7 +132,9 @@ private
   def find_patient
     @patient = Patient.find params[:id]
   end
-
+  def find_med
+    @med = Med.find params[:id]
+  end
   def find_hospital
     @hospital = Hospital.find params[:hospital_id]
   end

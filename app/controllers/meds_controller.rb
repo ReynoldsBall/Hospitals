@@ -34,11 +34,12 @@ class MedsController < ApplicationController
     
     @patient = Patient.find params[:patient_id]
     @hospital = Hospital.find params[:hospital_id]  
-    @med = Med.new med_params
-    if @med.save
-      redirect_to hospital_patient_path(@hospital, @patient)
+    @med = @patient.med.new(med_params)
+    
+   if @med.save
+        redirect_to hospital_patient_path(@hospital, @patient)
     else
-      render :new 
+        render :new 
     end
     
   end
@@ -49,11 +50,11 @@ class MedsController < ApplicationController
     @patient = Patient.find params[:patient_id]
     @hospital = Hospital.find params[:hospital_id]
     
-    if @med.update(med_params)
-      redirect_to hospital_patient_path(@hospital, @patient)
-    else
-      render :edit 
-    end
+      if @med.update(med_params)
+       redirect_to hospital_patient_path(@hospital, @patient)
+      else
+        render :edit 
+      end
   end
 
   def destroy
@@ -61,8 +62,9 @@ class MedsController < ApplicationController
     @patient = Patient.find params[:patient_id]
     @med = Med.find(params[:id])
     @med.destroy
-    redirect_to hospital_patient_path(@hospital, @patient)
-    head :no_content
+    respond_to do |format|
+      format.html { redirect_to hospital_patient_path(@hospital, @patient), notice: 'med History Deleted'}
+      format.json {head :no_content}
     end
   end
 
@@ -81,13 +83,16 @@ class MedsController < ApplicationController
 
 
 private
-  def find_patient
-    @patient = Patient.find params[:id]
+   def find_patient
+    @patient = Patient.find params[:patient_id]
   end
-
   def find_hospital
     @hospital = Hospital.find params[:hospital_id]
   end
+  def find_medication
+    @med= Med.find params[:id]
+  end   
+
   def med_params
     params.require(:med).permit(:name, :instruction, :patient_id)
   end
