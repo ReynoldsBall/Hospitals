@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'welcome#index'
-
+  get '/patients' => 'patients#patients_search'
   resources :hospitals do
     member do
       post :create_doctor

@@ -1,4 +1,4 @@
-%h1 Hospitals
+%h1 Hospitals of Charleston
 
 = link_to "View Hospitals", hospitals_path
 
@@ -6,6 +6,11 @@
 
 = link_to "Create Hospital", new_hospital_path
 
+/ %p
+/   Patient's Last Name:
+/ =text_field_tag" "," ", class: "patient_search"
+/ =link_to "Patient Search", 'javascript:void(0)', class: "patient_search btn btn-lg btn-success"
+/ %ul.seach_list
 
 
 

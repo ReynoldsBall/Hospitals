@@ -27,17 +27,33 @@
 %p= @patient.description 
 
 
-
-%h2 Doctors
-
--@doctors.each do |f|
-  %li  
-    = f.name
-    |
-
-    = link_to "delete", delete_doctor_hospital_path(@hospital, @patient, doctor_id: f.id), method: :delete
+%h3 Current Meds:
+    
+%a
+  - @patient.meds.each do |med|
+    = link_to "#{@med.name}", hospital_patient_med_path(@hospital, @patient, med)
+    = link_to "Edit", edit_hospital_patient_med_path(@hospital, @patient, med)
+    = link_to "Delete", hospital_patient_med_path(@hospital, @patient, med), method: :delete
     %br
     %br
+%div
+  = link_to "Add med", new_hospital_patient_med_path(@hospital, @patient)
+
+%br
+  %p
+    - @patient.doctors.each do |doctor|
+      - if doctor.name 
+        = doctor.name
+        = link_to "Delete Doctor", delete_doctor_hospital_patient_path(@hospital, @patient, doctor_id: doctor.id), method: :delete
+  %br
+%div 
+  = form_for @doctor, url: create_doctor_hospital_patient_path(@hospital, @patient) do |f|
+    = f.label :name, "Doctor To Be Assigned:"
+    = f.text_field :name
+    = f.submit
+%br
+    
+%br
 
 
 / %p
@@ -66,7 +82,7 @@
 / @patient.hospital
 %br
 
-= link_to 'Medications', hospital_patient_meds_path(@hospital,@patient)
+/ = link_to 'meds', hospital_patient_meds_path(@hospital,@patient)
 %br
 = link_to 'Back', hospital_path(@hospital)
 
