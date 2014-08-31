@@ -35,14 +35,15 @@ class MedsController < ApplicationController
     @patient = Patient.find params[:patient_id]
     @hospital = Hospital.find params[:hospital_id]  
     @med = Med.new med_params
-
+    redirect_to hospital_patient_path(@hospital, @patient)
   end
 
   
   def update
     @med = Med.find(params[:id])
     @patient = Patient.find params[:patient_id]
-    @hospital = Hospital.find params[:hospital_id]  
+    @hospital = Hospital.find params[:hospital_id]
+    redirect_to hospital_patient_path(@hospital, @patient)
   end
 
   def destroy
@@ -70,10 +71,7 @@ class MedsController < ApplicationController
   end
 
 
-private
-  
-
-    
+private 
 
     def med_params
     params.require(:med).permit(:name, :instruction, :patient_id)
