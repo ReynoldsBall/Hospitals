@@ -43,13 +43,8 @@ class Patient < ActiveRecord::Base
     end
     state :discharged
   end
-  def DOB_cannot_be_in_the_future
-    unless DOB.instance_of?(Date) && (DOB <= Date.today)
-      errors.add(:DOB, "must be a DATE before today") 
-    end
-  end
+  
   validates :DOB, presence: true
-  validate :DOB_cannot_be_in_the_future
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :gender, presence: true

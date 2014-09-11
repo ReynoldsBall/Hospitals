@@ -34,7 +34,7 @@ class MedsController < ApplicationController
     
     @patient = Patient.find params[:patient_id]
     @hospital = Hospital.find params[:hospital_id]  
-    @med = @patient.med.new(med_params)
+    @med = @patient.meds.new(med_params)
     
     if @med.save
         redirect_to hospital_patient_path(@hospital, @patient)
@@ -89,7 +89,7 @@ private
   def find_hospital
     @hospital = Hospital.find params[:hospital_id]
   end
-  def find_medication
+  def find_med
     @med= Med.find params[:id]
   end   
 

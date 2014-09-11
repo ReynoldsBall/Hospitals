@@ -5,6 +5,7 @@ class PatientsController < ApplicationController
   def index
     @patients = Patient.all
     @hospital = Hospital.find params[:hospital_id] 
+    @patients= Patient.search(params[:search])
   end
 
   def search_patients
@@ -15,11 +16,9 @@ class PatientsController < ApplicationController
 end 
 
   def show
-    p params
     @patient = Patient.find(params[:id])
     
     @hospital = Hospital.find params[:hospital_id] 
-   @doctors = @hospital.doctors.all
    @doctor = @hospital.doctors.new
   end
 
